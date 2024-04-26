@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/lmsProjectOLek.jar app.jar
+COPY --from=build /target/lmsProjectOLek-0.0.1-SNAPSHOT.jar lmsProjectOLek.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "lmsProjectOLek.jar"]
