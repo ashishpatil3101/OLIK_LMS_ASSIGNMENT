@@ -13,6 +13,11 @@ Follow these steps to set up and run the application:
 
 2. **Clone the Repository**:
    - git clone https://github.com/ashishpatil3101/OLIK_LMS_ASSIGNMENT.git
+     
+3.  **Add database properties**:
+   - add database properties in applicatio.properties file
+   - add postgres sql connection url, password, username
+   - you are good togo
 
 3. **Build the Project**:
    - cd <project_directory>
