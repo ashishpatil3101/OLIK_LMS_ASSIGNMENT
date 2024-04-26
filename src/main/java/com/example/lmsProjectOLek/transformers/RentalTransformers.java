@@ -38,6 +38,7 @@ public class RentalTransformers {
                 .id(rental.getId())
                 .renterName(rental.getRenterName())
                 .rentalDate(rental.getRentalDate())
+                .returnDate(rental.getReturnDate())
                 .bookResponseDto(newBook)
                 .build();
 

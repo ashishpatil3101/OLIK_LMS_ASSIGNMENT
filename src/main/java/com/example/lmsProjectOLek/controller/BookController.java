@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/book")
 public class BookController {
 
-    @GetMapping("/")
-    public  String senmsg(){
-        return "hey bhiay";
-    }
 
     private BookService bookService;
 

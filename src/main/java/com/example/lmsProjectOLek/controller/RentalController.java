@@ -27,7 +27,7 @@ public class RentalController {
         this.rentalService = rentalService;
     }
 
-    @PostMapping
+    @PostMapping("/rent")
     public ResponseEntity createRental(RentalRequestDto rentalRequestDto){
         try{
             RentalResponseDto result = rentalService.createRental(rentalRequestDto);
@@ -58,10 +58,19 @@ public class RentalController {
         }
     }
    
-    @PostMapping("/returnBook/{rentalId}/{bookId}")
+    @PostMapping("/returnBook/{rentalId}")
     public ResponseEntity returnBook(@PathVariable Long rentalId){
         try {
             return new ResponseEntity<>(rentalService.returnBook(rentalId), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/records")
+    public ResponseEntity getAllrecords(){
+        try {
+            return new ResponseEntity<>(rentalService.rentalRecords(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }

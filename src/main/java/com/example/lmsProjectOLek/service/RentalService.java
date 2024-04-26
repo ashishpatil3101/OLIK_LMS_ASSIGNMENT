@@ -72,6 +72,7 @@ public class RentalService {
 
         Optional<Rental> rental = rentalRepository.findById(id);
         if(rental.isEmpty()) throw new Exception("Rental record does not exist");
+        System.out.println(rental.get().getReturnDate());
         if(rental.get().getReturnDate() != null)throw new Exception("Book is already returned");
         rental.get().setReturnDate(new Date());
         Rental  savedRental =  rentalRepository.save(rental.get());
@@ -95,5 +96,13 @@ public class RentalService {
             }
             return true;
         }
+    }
+
+
+    public List<RentalResponseDto> rentalRecords(){
+        List<RentalResponseDto>result  = new ArrayList<>();
+        List<Rental> renatals = rentalRepository.findAll();
+        for(Rental rental : renatals)result.add(RentalTransformers.prepareRentalResponse(rental));
+        return result;
     }
 }
